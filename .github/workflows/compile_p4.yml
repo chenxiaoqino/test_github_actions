@@ -8,7 +8,7 @@ jobs:
             image: ghcr.io/chenxiaoqino/bf-p4c-minimal:latest
             credentials:
                 username: ${{ github.actor }}
-                password: ${{ secrets.github_token }}
+                password: ${{ secrets.GITHUB_TOKEN }}
         steps:
             - name: Checkout Repo
               uses: actions/checkout@v3
