@@ -19,6 +19,6 @@ jobs:
             - name: Save artifact
               uses: actions/upload-artifact@v3
               with:
-                   name: p4-binary
+                   name: main.tofino
                    path: main.tofino
 
