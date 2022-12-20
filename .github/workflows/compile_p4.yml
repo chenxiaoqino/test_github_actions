@@ -1,0 +1,24 @@
+name: action-compile-p4
+run-name: Github Action Compile P4
+on: [push]
+jobs:
+    job-compile:
+        runs-on: ubuntu-latest
+        container:
+            image: ghcr.io/chenxiaoqino/bf-p4c-minimal:latest
+            credentials:
+                username: ${{ github.actor }}
+                password: ${{ secrets.github_token }}
+        steps:
+            - name: Checkout Repo
+              uses: actions/checkout@v3
+            - name: Check compiler
+              run:  bf-p4c --version
+            - name: Compile
+              run:  bf-p4c p4src/main.p4
+            - name: Save artifact
+              uses: actions/upload-artifact@v3
+              with:
+                   name: p4-binary
+                   path: main.tofino
+
